@@ -46,6 +46,27 @@ EMAIL_PASS = your-16-character-app-password
 
 ## Troubleshooting
 
+### If you get a 500 Internal Server Error:
+
+1. **Check Environment Variables**:
+   - Visit: `https://your-site.netlify.app/.netlify/functions/test-env`
+   - This will show if your environment variables are properly set
+
+2. **Check Netlify Function Logs**:
+   - Go to your Netlify dashboard
+   - Navigate to "Functions" tab
+   - Click on the "contact" function
+   - Check the "Logs" section for error details
+
+3. **Verify Gmail App Password**:
+   - Make sure you're using the 16-character app password, not your regular Gmail password
+   - Ensure 2-Step Verification is enabled on your Google account
+
+4. **Common Issues**:
+   - **Missing environment variables**: Set `EMAIL_USER` and `EMAIL_PASS` in Netlify
+   - **Invalid app password**: Generate a new Gmail app password
+   - **CORS issues**: The updated function now handles CORS properly
+
 ### If emails aren't being received:
 1. Check Netlify function logs in the dashboard
 2. Verify environment variables are set correctly
