@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DevOps & Cloud themed design system with clean typography */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 225 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 225 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 15% 15%;
+
+    --primary: 225 15% 15%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 225 15% 15%;
+
+    --muted: 225 25% 95%;
+    --muted-foreground: 225 15% 50%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 225 15% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 225 25% 90%;
+    --input: 225 25% 90%;
+    --ring: 225 15% 15%;
+
+    --radius: 0.375rem;
+
+    /* Cloud-themed accent colors */
+    --cloud-blue: 210 100% 50%;
+    --cloud-blue-light: 210 100% 95%;
+    --tech-green: 142 76% 36%;
+    --tech-orange: 25 95% 53%;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 225 25% 8%;
+    --foreground: 225 15% 90%;
+
+    --card: 225 25% 8%;
+    --card-foreground: 225 15% 90%;
+
+    --popover: 225 25% 8%;
+    --popover-foreground: 225 15% 90%;
+
+    --primary: 225 15% 90%;
+    --primary-foreground: 225 25% 8%;
+
+    --secondary: 225 25% 12%;
+    --secondary-foreground: 225 15% 90%;
+
+    --muted: 225 25% 12%;
+    --muted-foreground: 225 15% 65%;
+
+    --accent: 225 25% 12%;
+    --accent-foreground: 225 15% 90%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 225 15% 90%;
+
+    --border: 225 25% 18%;
+    --input: 225 25% 18%;
+    --ring: 225 15% 90%;
+
+    /* Dark theme cloud colors */
+    --cloud-blue: 210 100% 60%;
+    --cloud-blue-light: 210 100% 10%;
+    --tech-green: 142 76% 50%;
+    --tech-orange: 25 95% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground font-sans antialiased;
+    /* font-feature-settings: "Geist Mono", monospace; */
+    font-family: "Inter", sans-serif;
+    background-image: url('/light-grid-background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    background-color: transparent !important;
+  }
+
+  /* Custom typography styles */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Override background colors to show background image */
+  .bg-background {
+    background-color: transparent !important;
+  }
+
+  /* Add backdrop blur and semi-transparent backgrounds for better readability */
+  nav {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  .dark nav {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+  }
+
+  /* Ensure cards have proper contrast */
+  .card {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.9) !important;
+  }
+
+  .dark .card {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+  }
+
+  /* Ensure proper contrast for light mode */
+  .light {
+    --background: transparent;
+    --foreground: 225 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 225 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 15% 15%;
+    --primary: 225 15% 15%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 225 15% 15%;
+    --muted: 225 25% 95%;
+    --muted-foreground: 225 15% 50%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 225 15% 15%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 225 25% 90%;
+    --input: 225 25% 90%;
+    --ring: 225 15% 15%;
+  }
+
+  /* Ensure proper contrast for dark mode */
+  .dark {
+    --background: transparent;
+    --foreground: 225 15% 90%;
+    --card: 225 25% 8%;
+    --card-foreground: 225 15% 90%;
+    --popover: 225 25% 8%;
+    --popover-foreground: 225 15% 90%;
+    --primary: 225 15% 90%;
+    --primary-foreground: 225 25% 8%;
+    --secondary: 225 25% 12%;
+    --secondary-foreground: 225 15% 90%;
+    --muted: 225 25% 12%;
+    --muted-foreground: 225 15% 65%;
+    --accent: 225 25% 12%;
+    --accent-foreground: 225 15% 90%;
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 225 15% 90%;
+    --border: 225 25% 18%;
+    --input: 225 25% 18%;
+    --ring: 225 15% 90%;
+  }
+}
+
+@layer utilities {
+  .cloud-gradient {
+    background: linear-gradient(135deg, hsl(var(--cloud-blue)) 0%, hsl(var(--tech-green)) 100%);
+  }
+
+  .tech-text-gradient {
+    background: linear-gradient(135deg, hsl(var(--cloud-blue)), hsl(var(--tech-green)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
