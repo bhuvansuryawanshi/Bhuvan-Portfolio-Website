@@ -1,0 +1,17 @@
+name: dmeo-cicd
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+   build-deploy:
+     runs-on: ubuntu-latest
+     steps:
+       - name: checkout repo
+         uses: actions/checkout@v4
+
+       - name: run hello
+         run: echo "hello world"
+     
