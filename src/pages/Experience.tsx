@@ -31,7 +31,29 @@ const Experience = () => {
     ]
 
     return (
-        <div className="min-h-screen relative">
+        <div className="min-h-screen relative overflow-hidden">
+            {/* Background Decorative Elements */}
+            <div className="fixed inset-0 pointer-events-none">
+                {/* Floating geometric shapes */}
+                <div className="absolute top-32 left-10 w-28 h-28 border border-terminal-green/10 rounded-lg -rotate-12 animate-float" />
+                <div className="absolute bottom-32 right-20 w-32 h-32 border border-pipeline-blue/10 rounded-full animate-float-delayed" />
+                <div className="absolute top-1/2 right-10 w-20 h-20 border border-deploy-orange/10 rounded-lg rotate-12 animate-float" />
+
+                {/* Floating code snippets */}
+                <div className="absolute top-40 right-40 px-3 py-2 rounded bg-pipeline-blue/5 border border-pipeline-blue/10 font-mono text-xs text-pipeline-blue/30 rotate-6 animate-float hidden lg:block">
+                    git commit -m
+                </div>
+                <div className="absolute bottom-1/4 left-20 px-3 py-2 rounded bg-terminal-green/5 border border-terminal-green/10 font-mono text-xs text-terminal-green/30 -rotate-3 animate-float-delayed hidden lg:block">
+                    npm run build
+                </div>
+
+                {/* Pipeline flow lines */}
+                <div className="absolute top-1/4 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-pulse-slow" style={{ animationDelay: '0.5s' }} />
+
+                {/* Grid dots pattern */}
+                <div className="absolute inset-0 bg-dot-pattern opacity-[0.02]" />
+            </div>
+
             <div className="container max-w-4xl px-4 sm:px-6 py-8 sm:py-12 relative">
                 <div className="space-y-8 sm:space-y-12">
                     {/* Header */}

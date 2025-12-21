@@ -52,7 +52,37 @@ const Index = () => {
   ]
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="fixed inset-0 pointer-events-none">
+        {/* Floating geometric shapes */}
+        <div className="absolute top-20 left-10 w-32 h-32 border border-terminal-green/10 rounded-lg rotate-12 animate-float" />
+        <div className="absolute top-40 right-20 w-24 h-24 border border-pipeline-blue/10 rounded-full animate-float-delayed" />
+        {/* <div className="absolute bottom-40 left-1/4 w-40 h-40 border border-deploy-orange/10 rounded-lg -rotate-12 animate-float" /> */}
+        <div className="absolute top-1/3 right-1/3 w-20 h-20 border border-docker-blue/10 rounded-full animate-float-delayed" />
+
+        {/* Floating code snippets */}
+        <div className="absolute top-32 right-40 px-3 py-2 rounded bg-terminal-green/5 border border-terminal-green/10 font-mono text-xs text-terminal-green/30 rotate-6 animate-float hidden lg:block">
+          kubectl apply -f
+        </div>
+        <div className="absolute bottom-1/3 left-20 px-3 py-2 rounded bg-pipeline-blue/5 border border-pipeline-blue/10 font-mono text-xs text-pipeline-blue/30 -rotate-3 animate-float-delayed hidden lg:block">
+          docker build -t
+        </div>
+        <div className="absolute top-1/2 right-10 px-3 py-2 rounded bg-deploy-orange/5 border border-deploy-orange/10 font-mono text-xs text-deploy-orange/30 rotate-12 animate-float hidden lg:block">
+          terraform init
+        </div>
+        <div className="absolute bottom-20 right-1/4 px-3 py-2 rounded bg-terminal-green/5 border border-terminal-green/10 font-mono text-xs text-terminal-green/30 -rotate-6 animate-float-delayed hidden lg:block">
+          while(true)
+        </div>
+
+        {/* Pipeline flow lines */}
+        <div className="absolute top-1/4 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-0 w-1/2 h-px bg-gradient-to-l from-transparent via-pipeline-blue/10 to-transparent animate-pulse-slow" style={{ animationDelay: '1s' }} />
+
+        {/* Grid dots pattern */}
+        <div className="absolute inset-0 bg-dot-pattern opacity-[0.02]" />
+      </div>
+
       <div className="container max-w-5xl px-4 sm:px-6 py-8 sm:py-12 lg:py-16 relative">
         <div className="space-y-16 sm:space-y-20 lg:space-y-24">
 
@@ -65,7 +95,7 @@ const Index = () => {
             </div>
 
             {/* Terminal-style intro - ENLARGED */}
-            <div className="terminal-window max-w-6xl animate-fade-in-delay-2">
+            <div className="terminal-window max-w-6xl animate-fade-in-delay-2 bg-background/95 border-2">
               <div className="terminal-header">
                 <div className="terminal-dot bg-red-500" />
                 <div className="terminal-dot bg-yellow-500" />
@@ -87,7 +117,7 @@ const Index = () => {
                       <span className="text-pipeline-blue">role:</span> DevOps Engineer & Cloud Enthusiast
                     </p>
                     <p className="text-muted-foreground mt-2">
-                      <span className="text-terminal-green">motto:</span> Getting Better Every Day
+                      <span className="text-terminal-green">motto:</span> Get Better Every Day
                     </p>
                   </div>
                 )}
@@ -99,23 +129,23 @@ const Index = () => {
           <section className="relative space-y-6">
             {/* Decorative terminal elements */}
             <div className="absolute -top-4 -left-4 w-16 h-16 border-2 border-terminal-green/20 rounded-lg rotate-12 hidden lg:block" />
-            <div className="absolute -bottom-4 -right-4 w-20 h-20 border-2 border-pipeline-blue/20 rounded-lg -rotate-12 hidden lg:block" />
+            <div className="absolute -bottom-4 -right-4 w-20 h-20 border-2 border-pipeline-blue/20 rdounded-lg -rotate-12 hidden lg:block" />
             <div className="absolute top-1/2 right-0 w-12 h-12 bg-deploy-orange/10 rounded-full hidden lg:block" />
 
-            {/* Role Badge */}
+            {/* Role Badge
             <div className="flex items-center gap-3">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-terminal-green/20 to-pipeline-blue/20 border border-terminal-green/30">
                 <Terminal className="h-4 w-4 text-terminal-green" />
                 <span className="text-sm font-bold tracking-wide text-terminal-green">DEVOPS ENGINEER</span>
               </div>
-            </div>
+            </div> */}
 
             {/* Main Content Card */}
             <div className="relative">
               {/* Grid pattern background */}
               <div className="absolute inset-0 bg-grid-pattern opacity-5 rounded-2xl" />
 
-              <div className="relative grid lg:grid-cols-3 gap-8 p-8 rounded-2xl bg-gradient-to-br from-card via-secondary/50 to-card border-2 border-border overflow-hidden">
+              <div className="relative grid lg:grid-cols-3 gap-8 p-8 rounded-2xl bg-background/90 border-2 border-border overflow-hidden">
                 {/* Left: Content */}
                 <div className="lg:col-span-2 space-y-6 relative z-10">
                   {/* Title */}
@@ -142,7 +172,7 @@ const Index = () => {
                     <div className="space-y-3">
                       <div className="flex items-center gap-2">
                         <div className="h-px flex-1 bg-gradient-to-r from-terminal-green/50 to-transparent" />
-                        <span className="text-xs font-bold text-terminal-green font-mono">PRIMARY_STACK</span>
+                        <span className="text-xs  font-bold text-terminal-green font-mono">PRIMARY_STACK</span>
                         <div className="h-px flex-1 bg-gradient-to-l from-terminal-green/50 to-transparent" />
                       </div>
                       <div className="flex flex-wrap gap-2">
@@ -155,13 +185,22 @@ const Index = () => {
                           { name: "Python", icon: "/icons/python.svg" },
                           { name: "Linux", icon: "/icons/linux.svg" },
                           { name: "Ansible", icon: "/icons/ansible.svg" },
+                          { name: "Grafana", icon: "/icons/grafana.svg" },
+                          { name: "Prometheus", icon: "/icons/prometheus.svg" },
                         ].map((tech) => (
                           <div
                             key={tech.name}
-                            className="group relative p-2 rounded-lg bg-background/80 border border-border hover:border-terminal-green/50 transition-all"
-                            title={tech.name}
+                            className="group relative p-2 rounded-lg bg-background/80 border border-border hover:border-terminal-green/50 transition-all hover:shadow-lg hover:shadow-terminal-green/10"
                           >
-                            <img src={tech.icon} alt={tech.name} className="h-8 w-8 object-contain" />
+                            <img
+                              src={tech.icon}
+                              alt={tech.name}
+                              className="h-8 w-8 object-contain transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
+                            />
+                            {/* Tooltip */}
+                            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-background border border-terminal-green/30 rounded text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 pointer-events-none">
+                              {tech.name}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -180,15 +219,21 @@ const Index = () => {
                           { name: "Notion", icon: "/icons/notion.svg" },
                           { name: "Cursor", icon: "/icons/cursor.svg" },
                           { name: "Claude", icon: "/icons/claude.svg" },
-                          { name: "Grafana", icon: "/icons/grafana.svg" },
-                          { name: "Prometheus", icon: "/icons/prometheus.svg" },
+
                         ].map((tool) => (
                           <div
                             key={tool.name}
-                            className="group relative p-2 rounded-lg bg-background/80 border border-border hover:border-pipeline-blue/50 transition-all"
-                            title={tool.name}
+                            className="group relative p-2 rounded-lg bg-background/80 border border-border hover:border-pipeline-blue/50 transition-all hover:shadow-lg hover:shadow-pipeline-blue/10"
                           >
-                            <img src={tool.icon} alt={tool.name} className="h-8 w-8 object-contain" />
+                            <img
+                              src={tool.icon}
+                              alt={tool.name}
+                              className="h-8 w-8 object-contain transition-all duration-300 group-hover:scale-110 group-hover:-rotate-12"
+                            />
+                            {/* Tooltip */}
+                            <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-background border border-pipeline-blue/30 rounded text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 pointer-events-none">
+                              {tool.name}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -241,7 +286,7 @@ const Index = () => {
               <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Deployment Pipeline</h2>
             </div>
 
-            <div className="relative p-8 rounded-xl bg-gradient-to-br from-card to-secondary/30 border border-border">
+            <div className="relative p-8 rounded-xl bg-background/90 border-2 border-border">
               {/* Pipeline track */}
               <div className="absolute top-1/2 left-8 right-8 h-0.5 bg-border -translate-y-1/2 hidden md:block" />
               <div className="absolute top-1/2 left-8 w-3/4 h-0.5 pipeline-flow -translate-y-1/2 hidden md:block" />
@@ -349,7 +394,7 @@ const Index = () => {
             <div className="grid gap-3 sm:grid-cols-3">
               <a
                 href="mailto:bhuvansuryawanshi0@gmail.com"
-                className="group flex items-center gap-3 p-4 rounded-lg bg-card border border-border hover:border-terminal-green/50 transition-all duration-300 hover:shadow-md"
+                className="group flex items-center gap-3 p-4 rounded-lg bg-background/90 border border-border hover:border-terminal-green/50 transition-all duration-300 hover:shadow-md"
               >
                 <div className="p-2 rounded-full bg-pipeline-blue/10 flex-shrink-0">
                   <Mail className="h-4 w-4 text-pipeline-blue" />
@@ -365,7 +410,7 @@ const Index = () => {
                 href="https://www.linkedin.com/in/bhuvan-suryawanshi/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 p-4 rounded-lg bg-card border border-border hover:border-terminal-green/50 transition-all duration-300 hover:shadow-md"
+                className="group flex items-center gap-3 p-4 rounded-lg bg-background/90 border border-border hover:border-terminal-green/50 transition-all duration-300 hover:shadow-md"
               >
                 <div className="p-2 rounded-full bg-docker-blue/10 flex-shrink-0">
                   <Linkedin className="h-4 w-4 text-docker-blue" />
@@ -381,7 +426,7 @@ const Index = () => {
                 href="https://github.com/bhuvansuryawanshi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 p-4 rounded-lg bg-card border border-border hover:border-terminal-green/50 transition-all duration-300 hover:shadow-md"
+                className="group flex items-center gap-3 p-4 rounded-lg bg-background/90 border border-border hover:border-terminal-green/50 transition-all duration-300 hover:shadow-md"
               >
                 <div className="p-2 rounded-full bg-secondary/50 flex-shrink-0">
                   <Github className="h-4 w-4 text-foreground" />
