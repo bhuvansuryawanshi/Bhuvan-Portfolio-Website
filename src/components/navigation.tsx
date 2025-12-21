@@ -48,7 +48,6 @@ const Navigation = () => {
             <span className="text-muted-foreground">bhuvan</span>
             <span className="text-terminal-green">@</span>
             <span className="text-muted-foreground">devops</span>
-            <span className="text-terminal-green typing-cursor"></span>
           </span>
           <span className="sm:hidden text-muted-foreground">bhuvan</span>
         </Link>
