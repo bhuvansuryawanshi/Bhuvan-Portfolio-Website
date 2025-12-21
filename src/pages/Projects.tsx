@@ -1,12 +1,14 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, Cloud, Server, GitBranch, Database, Globe, Terminal, CheckCircle2, ArrowRight } from "lucide-react"
 
 const Projects = () => {
   const projects = [
     {
       title: "Website Deployment on AWS",
+      type: "Infrastructure",
+      status: "deployed",
+      icon: Cloud,
       description: [
         "Designed and implemented a custom Amazon VPC with public/private subnets, route tables, IGW, and NAT Gateway.",
         "Launched and configured EC2 instances with optimal type selection and Elastic IPs.",
@@ -18,127 +20,207 @@ const Projects = () => {
       liveUrl: "#",
       githubUrl: "https://github.com/bhuvansuryawanshi"
     },
-
     {
-      title: "Secure File Transfer to Amazon S3 using AWS Transfer Family",
+      title: "Secure File Transfer with AWS Transfer Family",
+      type: "Security",
+      status: "deployed",
+      icon: Server,
       description: [
-        "Configured AWS Transfer Family with SFTP protocol to enable secure, password-based file transfers to Amazon S3 without requiring AWS credentials or console access for end users.",
-        "Created and managed SFTP users mapped to specific S3 directories using IAM roles and policies for scoped access control.",
-        "Verified end-to-end functionality by uploading files using FileZilla SFTP client, simulating real-world usage scenarios",
+        "Configured AWS Transfer Family with SFTP protocol to enable secure, password-based file transfers to Amazon S3.",
+        "Created and managed SFTP users mapped to specific S3 directories using IAM roles and policies.",
+        "Verified end-to-end functionality by uploading files using FileZilla SFTP client."
       ],
-      tech: ["S3", "Transfer Family"],
+      tech: ["S3", "Transfer Family", "SFTP", "IAM"],
       liveUrl: "#",
       githubUrl: "https://github.com/bhuvansuryawanshi"
     },
-
     {
-      title: "Shared Storage Setup Using Amazon EFS and EC2",
+      title: "Shared Storage with Amazon EFS",
+      type: "Storage",
+      status: "deployed",
+      icon: Database,
       description: [
-        "Created a shared storage system using Amazon EFS and connected it to two EC2 instances in the same VPC",
+        "Created a shared storage system using Amazon EFS and connected it to two EC2 instances in the same VPC.",
         "Set up secure NFS mounting so both instances could access the same files at the same time.",
-        "Enabled real-time file sharing across servers to keep data consistent and always available",
+        "Enabled real-time file sharing across servers to keep data consistent and always available."
       ],
-      tech: ["EC2", "EFS"],
+      tech: ["EC2", "EFS", "NFS", "VPC"],
       liveUrl: "#",
       githubUrl: "https://github.com/bhuvansuryawanshi"
     },
-
     {
-      title: "CI/CD with GitHub Actions, AWS S3, and CloudFront",
+      title: "CI/CD Pipeline with GitHub Actions",
+      type: "Automation",
+      status: "active",
+      icon: GitBranch,
       description: [
-        "Built an automated CI/CD pipeline to deploy a static website from GitHub to an Amazon S3 bucketusing GitHub Actions.",
-        "Configured GitHub Actions to trigger deployments on every push using the aws s3 sync command",
-        "Implemented OIDC-based IAM role assumption for secure, keyless authentication between GitHub and AWS",
-        "Integrated Amazon CloudFront as a Content Delivery Network (CDN) to improve website performance, reduce latency, and enable global content delivery.",
+        "Built an automated CI/CD pipeline to deploy a static website from GitHub to Amazon S3.",
+        "Configured GitHub Actions to trigger deployments on every push using aws s3 sync.",
+        "Implemented OIDC-based IAM role assumption for secure, keyless authentication.",
+        "Integrated Amazon CloudFront as CDN for improved performance and global delivery."
       ],
-      tech: ["S3", "CloudFront", "GitHub Actions", "CI/CD"],
+      tech: ["S3", "CloudFront", "GitHub Actions", "OIDC", "CI/CD"],
       liveUrl: "#",
       githubUrl: "https://github.com/bhuvansuryawanshi"
     },
-
     {
-      title: "Bombay Tribe Website",
+      title: "Bombay Tribe E-commerce",
+      type: "Web Dev",
+      status: "live",
+      icon: Globe,
       description: [
-        "Design and development of a fully responsive, feature-rich eCommerce website for Bombay Tribe using HTML, CSS, JavaScript, and PHP within the CodeIgniter framework.",
-        "Architected a user-friendly layout optimized for both desktop and mobile devices, ensuring cross-browser compatibility and seamless user experience across varied screen sizes",
-        "Developed and integrated custom functionalities including dynamic product filters, secure user authentication, cart and checkout systems, and admin panel with full CRUD capabilities",
-        "Implemented form validations, error handling, and user feedback mechanisms to provide a robust and intuitive interface throughout the shopping journey",
+        "Designed and developed a fully responsive eCommerce website using CodeIgniter framework.",
+        "Architected user-friendly layout optimized for desktop and mobile devices.",
+        "Developed custom functionalities including product filters, authentication, and admin panel.",
+        "Implemented form validations and error handling for robust user experience."
       ],
-      tech: ["S3", "CloudFront", "GitHub Actions", "CI/CD"],
+      tech: ["HTML", "CSS", "JavaScript", "PHP", "CodeIgniter"],
       liveUrl: "https://bombaytribe.com/home",
       githubUrl: "https://github.com/bhuvansuryawanshi"
     },
-
-
-
     {
       title: "Sahyadri Mitra Website",
+      type: "Web Dev",
+      status: "live",
+      icon: Globe,
       description: [
-        "Designed and developed a fully responsive, visually engaging website for Sahyadri Mitra using HTML, CSS, JavaScript, Bootstrap, PHP, and CodeIgniter.",
-        "Implemented smooth animations and interactive UI elements to enhance user engagement and modern appeal.",
-        "Ensured seamless navigation and optimal performance across all devices with a mobile-first, cross-browser compatible layout.",
-        "Integrated dynamic content management, secure user authentication, and an admin panel for easy updates and maintenance.",
-        "Focused on accessibility, fast load times, and a user-friendly experience for all visitors."
+        "Developed a fully responsive website using Bootstrap, PHP, and CodeIgniter.",
+        "Implemented smooth animations and interactive UI elements for modern appeal.",
+        "Ensured seamless navigation across all devices with mobile-first design.",
+        "Integrated dynamic content management and secure user authentication."
       ],
-      tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "CodeIgniter", "Animation"],
+      tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "CodeIgniter"],
       liveUrl: "https://sahyadrimitra.com/",
       githubUrl: "https://github.com/bhuvansuryawanshi"
     }
-
   ]
 
-
+  const getStatusBadge = (status: string) => {
+    const styles = {
+      deployed: "bg-green-500/10 text-green-400 border-green-500/30",
+      active: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+      live: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+      development: "bg-yellow-500/10 text-yellow-400 border-yellow-500/30"
+    }
+    return styles[status as keyof typeof styles] || styles.development
+  }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="container max-w-4xl py-12">
-        <div className="space-y-8">
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight">Projects</h1>
-            <p className="text-xl text-muted-foreground text-balance">
-              Discover the tools and experiments I've built
-            </p>
+    <div className="min-h-screen relative">
+      <div className="container max-w-5xl px-4 sm:px-6 py-8 sm:py-12 relative">
+        <div className="space-y-8 sm:space-y-12">
+          {/* Header */}
+          <div className="space-y-4 animate-fade-in-up">
+            <div className="flex items-center gap-3">
+              <Terminal className="h-6 w-6 text-terminal-green" />
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Projects</h1>
+            </div>
+            {/* <div className="terminal-window max-w-xl">
+              <div className="terminal-header">
+                <div className="terminal-dot bg-red-500" />
+                <div className="terminal-dot bg-yellow-500" />
+                <div className="terminal-dot bg-green-500" />
+                <span className="ml-4 text-xs text-muted-foreground font-mono">projects.sh</span>
+              </div>
+              <div className="terminal-body">
+                <p className="text-muted-foreground">
+                  <span className="text-terminal-green">$</span> ls -la ./deployments
+                </p>
+                <p className="text-muted-foreground mt-1">
+                  <span className="text-muted-foreground/50"># </span>
+                  Cloud deployments, infrastructure projects & web applications
+                </p>
+              </div>
+            </div> */}
           </div>
 
-          <div className="grid gap-6">
-            {projects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-2">
-                      <CardTitle className="text-xl">{project.title}</CardTitle>
-                      <ul className="list-disc pl-5 space-y-1 text-muted-foreground text-sm">
-                        {project.description.map((point, i) => (
-                          <li key={i}>{point}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Button variant="outline" size="icon" asChild>
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="h-4 w-4" />
-                        </a>
-                      </Button>
-                      <Button variant="outline" size="icon" asChild>
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4" />
-                        </a>
-                      </Button>
-                    </div>
-                  </div>
-                </CardHeader>
+          {/* Projects Grid */}
+          <div className="space-y-6">
+            {projects.map((project, index) => {
+              const Icon = project.icon
+              return (
+                <div
+                  key={index}
+                  className="rounded-lg bg-card border border-border overflow-hidden"
+                >
+                  {/* Project Header */}
+                  <div className="p-4 sm:p-6 border-b border-border/50">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                      <div className="flex items-start gap-4">
+                        <div className="p-2.5 rounded-lg bg-secondary shrink-0">
+                          <Icon className="h-5 w-5 text-terminal-green" />
+                        </div>
+                        <div className="space-y-2">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h3 className="text-lg font-semibold">{project.title}</h3>
+                            <Badge variant="outline" className={`text-xs ${getStatusBadge(project.status)}`}>
+                              <CheckCircle2 className="h-3 w-3 mr-1" />
+                              {project.status}
+                            </Badge>
+                          </div>
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground font-mono">
+                            <span className="px-2 py-0.5 rounded bg-secondary">{project.type}</span>
+                          </div>
+                        </div>
+                      </div>
 
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
+                      {/* Action buttons */}
+                      <div className="flex gap-2 ml-11 sm:ml-0">
+                        {project.liveUrl !== "#" && (
+                          <Button variant="outline" size="sm" asChild className="h-8">
+                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                              <ExternalLink className="h-3.5 w-3.5 mr-1.5" />
+                              <span className="text-xs">Live</span>
+                              <ArrowRight className="h-3 w-3 ml-1" />
+                            </a>
+                          </Button>
+                        )}
+                        <Button variant="outline" size="sm" asChild className="h-8">
+                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                            <Github className="h-3.5 w-3.5 mr-1.5" />
+                            <span className="text-xs">Code</span>
+                          </a>
+                        </Button>
+                      </div>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+
+                  {/* Project Content */}
+                  <div className="p-4 sm:p-6 space-y-4">
+                    {/* Description */}
+                    <ul className="space-y-2">
+                      {project.description.map((point, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <span className="text-terminal-green mt-0.5 shrink-0">▸</span>
+                          <span className="leading-relaxed">{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Tech Stack */}
+                    <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border/50">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md bg-secondary/50 text-muted-foreground border border-border/50"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Footer note */}
+          <div className="text-center py-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/30 border border-border text-sm text-muted-foreground font-mono">
+              <span className="text-terminal-green">$</span>
+              <span>More projects coming soon...</span>
+              <span className="text-terminal-green animated-underscore"></span>
+            </div>
           </div>
         </div>
       </div>
