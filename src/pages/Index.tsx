@@ -37,18 +37,20 @@ const Index = () => {
 
   // Tech stack with icons (SVG paths for proper icons)
   const techStack = [
-    { name: "AWS", icon: "/icons/aws.svg", color: "#FF9900" },
-    { name: "Docker", icon: "/icons/docker.svg", color: "#2496ED" },
-    { name: "Kubernetes", icon: "/icons/kubernetes.svg", color: "#326CE5" },
+    { name: "AWS", icon: "/icons/aws.png", },
+    { name: "Docker", icon: "/icons/docker.png", color: "#2496ED" },
+    { name: "Kubernetes", icon: "/icons/kubernetes.png", color: "#326CE5" },
     { name: "Terraform", icon: "/icons/terraform.svg", color: "#7B42BC" },
-    { name: "Jenkins", icon: "/icons/jenkins.svg", color: "#D24939" },
+    // { name: "Jenkins", icon: "/icons/jenkins.svg", color: "#D24939" },
     { name: "GitHub Actions", icon: "/icons/github.svg", color: "#ffffff" },
-    { name: "Linux", icon: "/icons/linux.svg", color: "#FCC624" },
-    { name: "Ansible", icon: "/icons/ansible.svg", color: "#EE0000" },
-    { name: "Grafana", icon: "/icons/grafana.svg", color: "#F46800" },
+    { name: "Linux", icon: "/icons/linux.png", color: "#FCC624" },
+    // { name: "Ansible", icon: "/icons/ansible.svg", color: "#EE0000" },
+    { name: "Grafana", icon: "/icons/grafana.png", color: "#F46800" },
     { name: "Prometheus", icon: "/icons/prometheus.svg", color: "#E6522C" },
     { name: "Python", icon: "/icons/python.svg", color: "#3776AB" },
     { name: "Nginx", icon: "/icons/nginx.svg", color: "#009639" },
+    { name: "Github", icon: "/icons/github.svg", color: "#009639" },
+    { name: "ClickHouse", icon: "/icons/clickhouse.png", color: "#009639" },
   ]
 
   return (
@@ -153,7 +155,7 @@ const Index = () => {
                     <div className="flex gap-2">
                       <div className="w-3 h-3 rounded-full bg-red-500" />
                       <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                      <div className="w-3 h-3 rounded-full bg-terminal-green" />
+                      <div className="w-3 h-3 rounded-full bg-green-500" />
                     </div>
                     <h3 className="text-xl font-bold tracking-tight">$ cat about.txt</h3>
                   </div>
@@ -177,16 +179,18 @@ const Index = () => {
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {[
-                          { name: "AWS", icon: "/icons/aws.svg" },
-                          { name: "Docker", icon: "/icons/docker.svg" },
-                          { name: "Kubernetes", icon: "/icons/kubernetes.svg" },
+                          { name: "AWS", icon: "/icons/aws.png" },
+                          { name: "Docker", icon: "/icons/docker.png" },
+                          { name: "Kubernetes", icon: "/icons/kubernetes.png" },
                           { name: "Terraform", icon: "/icons/terraform.svg" },
-                          { name: "Jenkins", icon: "/icons/jenkins.svg" },
+                          // { name: "Jenkins", icon: "/icons/jenkins.svg" },
                           { name: "Python", icon: "/icons/python.svg" },
-                          { name: "Linux", icon: "/icons/linux.svg" },
-                          { name: "Ansible", icon: "/icons/ansible.svg" },
-                          { name: "Grafana", icon: "/icons/grafana.svg" },
+                          { name: "Linux", icon: "/icons/linux.png" },
+                          // { name: "Ansible", icon: "/icons/ansible.svg" },
+                          { name: "Grafana", icon: "/icons/grafana.png" },
                           { name: "Prometheus", icon: "/icons/prometheus.svg" },
+                          { name: "Github", icon: "/icons/github.svg" },
+                          { name: "ClickHouse", icon: "/icons/clickhouse.png" },
                         ].map((tech) => (
                           <div
                             key={tech.name}
@@ -216,9 +220,9 @@ const Index = () => {
                       <div className="flex flex-wrap gap-2">
                         {[
                           { name: "Slack", icon: "/icons/slack.svg" },
-                          { name: "Notion", icon: "/icons/notion.svg" },
-                          { name: "Cursor", icon: "/icons/cursor.svg" },
-                          { name: "Claude", icon: "/icons/claude.svg" },
+                          { name: "Notion", icon: "/icons/notion.png" },
+                          { name: "Cursor", icon: "/icons/cursor.png" },
+                          { name: "Claude", icon: "/icons/claude.png" },
 
                         ].map((tool) => (
                           <div
@@ -255,14 +259,12 @@ const Index = () => {
                   <div className="relative group">
                     <div className="absolute inset-0 bg-gradient-to-br from-terminal-green/20 to-pipeline-blue/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all" />
                     <div className="relative w-64 h-64 rounded-2xl border-4 border-border bg-gradient-to-br from-secondary to-card overflow-hidden">
-                      {/* Placeholder with icon */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-terminal-green/5 to-pipeline-blue/5">
-                        <div className="text-center space-y-3">
-                          <Terminal className="h-16 w-16 mx-auto text-terminal-green/50" />
-                          <p className="text-xs text-muted-foreground font-mono">Image Placeholder</p>
-                          <p className="text-[10px] text-muted-foreground/50 max-w-[200px]">Add your photo here to personalize</p>
-                        </div>
-                      </div>
+                      {/* Profile Image */}
+                      <img
+                        src="/profile-image.jpeg"
+                        alt="Bhuvan Suryawanshi"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
                       {/* Scan line effect */}
                       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-terminal-green/5 to-transparent animate-scan-line" />
                     </div>

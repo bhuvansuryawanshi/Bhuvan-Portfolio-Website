@@ -5,13 +5,14 @@ const Experience = () => {
         {
             company: "Procedure Tech",
             location: "Remote",
-            role: "DevOps Engineer",
+            role: "DevOps Intern",
             type: "Full-time",
             period: "Oct 2025 – Present",
             highlights: [
-                "CI/CD Pipeline Development: Built and maintained robust CI/CD pipelines using Jenkins and GitHub Actions, automating build, test, and deployment processes to reduce deployment time by 40%.",
-                "Infrastructure as Code: Designed and implemented infrastructure automation using Terraform, managing multi-environment AWS deployments with version-controlled infrastructure configurations.",
-                "Container Orchestration: Deployed and managed containerized applications using Docker and Kubernetes, implementing auto-scaling and load balancing for improved application reliability and performance."
+                "CI/CD Pipeline Development: Built and maintained CI/CD pipelines using GitHub Actions, automating build, test, and deployment processes.",
+                "Infrastructure as Code: Designed and implemented infrastructure automation using Terraform, managing multi-environment AWS deployments.",
+                "Container Orchestration: Deployed and managed containerized applications using Docker.",
+                "Monitoring & Observability: Implemented real-time monitoring and visualization dashboards using Grafana to ensure system reliability."
             ]
         },
         {

@@ -96,7 +96,7 @@ const Skills = () => {
               <div className="terminal-header">
                 <div className="terminal-dot bg-red-500" />
                 <div className="terminal-dot bg-yellow-500" />
-                <div className="terminal-dot bg-green-500" />
+                <div className="terminal-dot bg-cyan-500" />
                 <span className="ml-4 text-xs text-muted-foreground font-mono">skills.json</span>
               </div>
               <div className="terminal-body">
@@ -210,7 +210,7 @@ const Skills = () => {
               <div className="terminal-header">
                 <div className="terminal-dot bg-red-500" />
                 <div className="terminal-dot bg-yellow-500" />
-                <div className="terminal-dot bg-green-500" />
+                <div className="terminal-dot bg-cyan-500" />
                 <span className="ml-4 text-xs text-muted-foreground font-mono">learning.sh</span>
               </div>
               <div className="terminal-body space-y-3">

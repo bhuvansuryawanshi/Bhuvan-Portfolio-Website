@@ -1,24 +1,40 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, Cloud, Server, GitBranch, Database, Globe, Terminal, CheckCircle2, ArrowRight } from "lucide-react"
+import { ExternalLink, Github, Cloud, Server, GitBranch, Database, Globe, Terminal, CheckCircle2, ArrowRight, Container } from "lucide-react"
 
 const Projects = () => {
   const projects = [
     {
-      title: "Website Deployment on AWS",
+      title: "CI/CD Pipeline with Flask & AWS",
+      type: "DevOps",
+      status: "deployed",
+      icon: Container,
+      description: [
+        "Architected a complete CI/CD pipeline using GitHub Actions for automated application deployment.",
+        "Developed Flask web application with full CRUD functionality and PostgreSQL database integration.",
+        "Implemented Docker containerization for portable, consistent deployments across environments.",
+        "Deployed infrastructure on AWS using EC2 for compute and RDS for managed PostgreSQL database."
+      ],
+      tech: ["GitHub Actions", "Docker", "Flask", "AWS EC2", "AWS RDS", "PostgreSQL", "CI/CD"],
+      liveUrl: "#",
+      githubUrl: "https://github.com/bhuvansuryawanshi/CI-CD_Pipeline_with_Flask_AWS"
+    },
+    {
+      title: "Terraform AWS Multi-Tier Architecture",
       type: "Infrastructure",
       status: "deployed",
       icon: Cloud,
       description: [
-        "Designed and implemented a custom Amazon VPC with public/private subnets, route tables, IGW, and NAT Gateway.",
-        "Launched and configured EC2 instances with optimal type selection and Elastic IPs.",
-        "Set up ALB, Target Groups, and Auto Scaling Groups to ensure 99.9% uptime.",
+        "Designed and implemented a custom Amazon VPC with public/private subnets across 2 availability zones, route tables, IGW, and NAT Gateways for high availability.",
+        "Built modular, reusable Terraform infrastructure with 5 separate modules (VPC, SG, ALB, ASG, CloudFront) following IaC best practices.",
+        "Configured Auto Scaling Groups with launch templates, health checks, and dynamic scaling (1-3 instances) for cost optimization and fault tolerance.",
+        "Implemented remote state management using S3 backend with DynamoDB state locking to prevent concurrent modifications.",
         "Used CloudFront CDN for global latency reduction and performance enhancement.",
-        "Applied IAM roles and Security Groups to secure access to AWS resources."
+        "Applied Security Groups to control inbound/outbound traffic to AWS resources."
       ],
-      tech: ["VPC", "EC2", "ALB", "CloudFront", "IAM", "Security Groups", "Auto Scaling"],
+      tech: ["VPC", "EC2", "ALB", "CloudFront", "IAM", "Security Groups", "Auto Scaling", "s3", "dynamodb", "Terraform"],
       liveUrl: "#",
-      githubUrl: "https://github.com/bhuvansuryawanshi"
+      githubUrl: "https://github.com/bhuvansuryawanshi/Terraform-AWS-Multi-Tier-Architecture"
     },
     {
       title: "Secure File Transfer with AWS Transfer Family",
@@ -26,43 +42,44 @@ const Projects = () => {
       status: "deployed",
       icon: Server,
       description: [
-        "Configured AWS Transfer Family with SFTP protocol to enable secure, password-based file transfers to Amazon S3.",
-        "Created and managed SFTP users mapped to specific S3 directories using IAM roles and policies.",
-        "Verified end-to-end functionality by uploading files using FileZilla SFTP client."
+        "Deployed AWS Transfer Family server with SFTP protocol for secure, encrypted file transfers to Amazon S3.",
+        "Configured IAM roles and policies to map SFTP users to specific S3 bucket directories with least-privilege access.",
+        "Implemented password-based authentication for simplified user management and secure access control.",
+        "Validated end-to-end file transfer workflow using FileZilla SFTP client with successful S3 integration."
       ],
-      tech: ["S3", "Transfer Family", "SFTP", "IAM"],
+      tech: ["AWS Transfer Family", "S3", "SFTP", "IAM", "Security", "FileZilla"],
       liveUrl: "#",
       githubUrl: "https://github.com/bhuvansuryawanshi"
     },
-    {
-      title: "Shared Storage with Amazon EFS",
-      type: "Storage",
-      status: "deployed",
-      icon: Database,
-      description: [
-        "Created a shared storage system using Amazon EFS and connected it to two EC2 instances in the same VPC.",
-        "Set up secure NFS mounting so both instances could access the same files at the same time.",
-        "Enabled real-time file sharing across servers to keep data consistent and always available."
-      ],
-      tech: ["EC2", "EFS", "NFS", "VPC"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/bhuvansuryawanshi"
-    },
-    {
-      title: "CI/CD Pipeline with GitHub Actions",
-      type: "Automation",
-      status: "active",
-      icon: GitBranch,
-      description: [
-        "Built an automated CI/CD pipeline to deploy a static website from GitHub to Amazon S3.",
-        "Configured GitHub Actions to trigger deployments on every push using aws s3 sync.",
-        "Implemented OIDC-based IAM role assumption for secure, keyless authentication.",
-        "Integrated Amazon CloudFront as CDN for improved performance and global delivery."
-      ],
-      tech: ["S3", "CloudFront", "GitHub Actions", "OIDC", "CI/CD"],
-      liveUrl: "#",
-      githubUrl: "https://github.com/bhuvansuryawanshi"
-    },
+    // {
+    //   title: "Shared Storage with Amazon EFS",
+    //   type: "Storage",
+    //   status: "deployed",
+    //   icon: Database,
+    //   description: [
+    //     "Created a shared storage system using Amazon EFS and connected it to two EC2 instances in the same VPC.",
+    //     "Set up secure NFS mounting so both instances could access the same files at the same time.",
+    //     "Enabled real-time file sharing across servers to keep data consistent and always available."
+    //   ],
+    //   tech: ["EC2", "EFS", "NFS", "VPC"],
+    //   liveUrl: "#",
+    //   githubUrl: "https://github.com/bhuvansuryawanshi"
+    // },
+    // {
+    //   title: "CI/CD Pipeline with GitHub Actions",
+    //   type: "Automation",
+    //   status: "active",
+    //   icon: GitBranch,
+    //   description: [
+    //     "Built an automated CI/CD pipeline to deploy a static website from GitHub to Amazon S3.",
+    //     "Configured GitHub Actions to trigger deployments on every push using aws s3 sync.",
+    //     "Implemented OIDC-based IAM role assumption for secure, keyless authentication.",
+    //     "Integrated Amazon CloudFront as CDN for improved performance and global delivery."
+    //   ],
+    //   tech: ["S3", "CloudFront", "GitHub Actions", "OIDC", "CI/CD"],
+    //   liveUrl: "#",
+    //   githubUrl: "https://github.com/bhuvansuryawanshi"
+    // },
     {
       title: "Bombay Tribe E-commerce",
       type: "Web Dev",
@@ -76,7 +93,7 @@ const Projects = () => {
       ],
       tech: ["HTML", "CSS", "JavaScript", "PHP", "CodeIgniter"],
       liveUrl: "https://bombaytribe.com/home",
-      githubUrl: "https://github.com/bhuvansuryawanshi"
+      githubUrl: "#"
     },
     {
       title: "Sahyadri Mitra Website",
@@ -91,7 +108,7 @@ const Projects = () => {
       ],
       tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "CodeIgniter"],
       liveUrl: "https://sahyadrimitra.com/",
-      githubUrl: "https://github.com/bhuvansuryawanshi"
+      githubUrl: "#"
     }
   ]
 
@@ -197,12 +214,14 @@ const Projects = () => {
                             </a>
                           </Button>
                         )}
-                        <Button variant="outline" size="sm" asChild className="h-8">
-                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                            <Github className="h-3.5 w-3.5 mr-1.5" />
-                            <span className="text-xs">Code</span>
-                          </a>
-                        </Button>
+                        {project.githubUrl !== "#" && (
+                          <Button variant="outline" size="sm" asChild className="h-8">
+                            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                              <Github className="h-3.5 w-3.5 mr-1.5" />
+                              <span className="text-xs">Code</span>
+                            </a>
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
