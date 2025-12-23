@@ -1,4 +1,7 @@
 import { Briefcase, Calendar, MapPin, Terminal, CheckCircle2 } from "lucide-react"
+import { motion } from "framer-motion"
+import { pageVariants, containerVariants, itemVariants } from "@/lib/animations"
+import { BackgroundBeams, GlowingOrb } from "@/components/ui/animated-beam"
 
 const Experience = () => {
     const experiences = [
@@ -32,24 +35,58 @@ const Experience = () => {
     ]
 
     return (
-        <div className="min-h-screen relative overflow-hidden">
+        <motion.div
+            className="min-h-screen relative overflow-hidden bg-background"
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={pageVariants}
+        >
             {/* Background Decorative Elements */}
+            <BackgroundBeams className="opacity-20" />
+            <GlowingOrb size={300} color="terminal-green" className="top-1/4 -right-20 opacity-20" />
+            <GlowingOrb size={250} color="pipeline-blue" className="bottom-1/4 -left-10 opacity-20" />
+
             <div className="fixed inset-0 pointer-events-none">
                 {/* Floating geometric shapes */}
-                <div className="absolute top-32 left-10 w-28 h-28 border border-terminal-green/10 rounded-lg -rotate-12 animate-float" />
-                <div className="absolute bottom-32 right-20 w-32 h-32 border border-pipeline-blue/10 rounded-full animate-float-delayed" />
-                <div className="absolute top-1/2 right-10 w-20 h-20 border border-deploy-orange/10 rounded-lg rotate-12 animate-float" />
+                <motion.div
+                    className="absolute top-32 left-10 w-28 h-28 border border-terminal-green/10 rounded-lg"
+                    animate={{
+                        rotate: [-12, 0, -12],
+                        y: [0, -10, 0]
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                />
+                <motion.div
+                    className="absolute bottom-32 right-20 w-32 h-32 border border-pipeline-blue/10 rounded-full"
+                    animate={{
+                        scale: [1, 1.1, 1],
+                        opacity: [0.1, 0.3, 0.1]
+                    }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+                />
 
                 {/* Floating code snippets */}
-                <div className="absolute top-40 right-40 px-3 py-2 rounded bg-pipeline-blue/5 border border-pipeline-blue/10 font-mono text-xs text-pipeline-blue/30 rotate-6 animate-float hidden lg:block">
+                <motion.div
+                    className="absolute top-40 right-40 px-3 py-2 rounded bg-pipeline-blue/5 border border-pipeline-blue/10 font-mono text-xs text-pipeline-blue/30 hidden lg:block"
+                    animate={{
+                        y: [0, 15, 0],
+                        rotate: [6, 10, 6]
+                    }}
+                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                >
                     git commit -m
-                </div>
-                <div className="absolute bottom-1/4 left-20 px-3 py-2 rounded bg-terminal-green/5 border border-terminal-green/10 font-mono text-xs text-terminal-green/30 -rotate-3 animate-float-delayed hidden lg:block">
+                </motion.div>
+                <motion.div
+                    className="absolute bottom-1/4 left-20 px-3 py-2 rounded bg-terminal-green/5 border border-terminal-green/10 font-mono text-xs text-terminal-green/30 hidden lg:block"
+                    animate={{
+                        y: [0, -15, 0],
+                        rotate: [-3, -6, -3]
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                >
                     npm run build
-                </div>
-
-                {/* Pipeline flow lines */}
-                <div className="absolute top-1/4 left-0 w-1/2 h-px bg-gradient-to-r from-transparent via-terminal-green/10 to-transparent animate-pulse-slow" style={{ animationDelay: '0.5s' }} />
+                </motion.div>
 
                 {/* Grid dots pattern */}
                 <div className="absolute inset-0 bg-dot-pattern opacity-[0.02]" />
@@ -57,32 +94,48 @@ const Experience = () => {
 
             <div className="container max-w-4xl px-4 sm:px-6 py-8 sm:py-12 relative">
                 <div className="space-y-8 sm:space-y-12">
-                    {/* Header */}
-                    <div className="space-y-4 animate-fade-in-up">
+                    {/* Header with scroll reveal */}
+                    <motion.div
+                        className="space-y-4"
+                        variants={itemVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
                         <div className="flex items-center gap-3">
                             <Briefcase className="h-6 w-6 text-terminal-green" />
                             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">Experience</h1>
                         </div>
+                    </motion.div>
 
-                    </div>
-
-                    {/* Timeline */}
-                    <div className="space-y-8">
+                    {/* Timeline with scroll reveal */}
+                    <motion.div
+                        className="space-y-8"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                    >
                         {experiences.map((exp, index) => (
-                            <div
+                            <motion.div
                                 key={index}
-                                className="relative pl-8 border-l-2 border-border hover:border-terminal-green/50 transition-colors duration-300"
+                                className="relative pl-8 border-l-2 border-border group"
+                                variants={itemVariants}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
                             >
+                                {/* Timeline animated line highlight */}
+                                <div className="absolute left-[-2px] top-0 bottom-0 w-[2px] bg-terminal-green origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-500" />
+
                                 {/* Timeline dot */}
-                                <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-terminal-green border-4 border-background" />
+                                <div className="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-background border-4 border-muted-foreground group-hover:border-terminal-green transition-colors duration-300 shadow-[0_0_0_4px_rgba(0,0,0,0)] group-hover:shadow-[0_0_10px_rgba(5,206,145,0.4)]" />
 
                                 {/* Experience card */}
-                                <div className="space-y-4 pb-8">
+                                <div className="space-y-4 pb-8 p-4 rounded-lg transition-colors duration-300">
                                     {/* Header */}
                                     <div className="space-y-2">
                                         <div className="flex flex-wrap items-start justify-between gap-2">
                                             <div>
-                                                <h3 className="text-xl sm:text-2xl font-bold text-foreground">{exp.company}</h3>
+                                                <h3 className="text-xl sm:text-2xl font-bold text-foreground group-hover:text-terminal-green transition-colors">{exp.company}</h3>
                                                 <p className="text-base sm:text-lg text-pipeline-blue font-medium mt-1">
                                                     {exp.role}
                                                 </p>
@@ -96,11 +149,11 @@ const Experience = () => {
                                         {/* Meta info */}
                                         <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                                             <div className="flex items-center gap-1.5">
-                                                <Calendar className="h-4 w-4" />
+                                                <Calendar className="h-4 w-4 text-terminal-green/70" />
                                                 <span className="font-mono">{exp.period}</span>
                                             </div>
                                             <div className="flex items-center gap-1.5">
-                                                <MapPin className="h-4 w-4" />
+                                                <MapPin className="h-4 w-4 text-terminal-green/70" />
                                                 <span>{exp.location}</span>
                                             </div>
                                         </div>
@@ -109,25 +162,30 @@ const Experience = () => {
                                     {/* Highlights */}
                                     <div className="space-y-3">
                                         {exp.highlights.map((highlight, hIndex) => (
-                                            <div key={hIndex} className="flex gap-3 group">
+                                            <motion.div
+                                                key={hIndex}
+                                                className="flex gap-3 group/item"
+                                                initial={{ opacity: 0, x: -10 }}
+                                                whileInView={{ opacity: 1, x: 0 }}
+                                                transition={{ delay: 0.1 * hIndex }}
+                                                viewport={{ once: true }}
+                                            >
                                                 <div className="flex-shrink-0 mt-1">
-                                                    <CheckCircle2 className="h-4 w-4 text-terminal-green" />
+                                                    <CheckCircle2 className="h-4 w-4 text-terminal-green/50 group-hover/item:text-terminal-green transition-colors" />
                                                 </div>
-                                                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
+                                                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed group-hover/item:text-foreground transition-colors">
                                                     {highlight}
                                                 </p>
-                                            </div>
+                                            </motion.div>
                                         ))}
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
-
-
+                    </motion.div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
