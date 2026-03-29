@@ -1,27 +1,12 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, Cloud, Server, Globe, Terminal, CheckCircle2, ArrowRight, Container } from "lucide-react"
+import { ExternalLink, Github, Cloud, Server, Globe, Terminal, CheckCircle2, ArrowRight } from "lucide-react"
 import { motion } from "framer-motion"
-import { pageVariants, containerVariants, itemVariants, floatVariants } from "@/lib/animations"
+import { pageVariants, containerVariants, itemVariants } from "@/lib/animations"
 import { BackgroundBeams, GlowingOrb } from "@/components/ui/animated-beam"
 
 const Projects = () => {
     const projects = [
-        {
-            title: "CI/CD Pipeline with Flask & AWS",
-            type: "DevOps",
-            status: "deployed",
-            icon: Container,
-            description: [
-                "Architected a complete CI/CD pipeline using GitHub Actions for automated application deployment.",
-                "Developed Flask web application with full CRUD functionality and PostgreSQL database integration.",
-                "Implemented Docker containerization for portable, consistent deployments across environments.",
-                "Deployed infrastructure on AWS using EC2 for compute and RDS for managed PostgreSQL database."
-            ],
-            tech: ["GitHub Actions", "Docker", "Flask", "AWS EC2", "AWS RDS", "PostgreSQL", "CI/CD"],
-            liveUrl: "#",
-            githubUrl: "https://github.com/bhuvansuryawanshi/CI-CD_Pipeline_with_Flask_AWS"
-        },
         {
             title: "Terraform AWS Multi-Tier Architecture",
             type: "Infrastructure",
@@ -32,8 +17,7 @@ const Projects = () => {
                 "Built modular, reusable Terraform infrastructure with 5 separate modules (VPC, SG, ALB, ASG, CloudFront) following IaC best practices.",
                 "Configured Auto Scaling Groups with launch templates, health checks, and dynamic scaling (1-3 instances) for cost optimization and fault tolerance.",
                 "Implemented remote state management using S3 backend with DynamoDB state locking to prevent concurrent modifications.",
-                "Used CloudFront CDN for global latency reduction and performance enhancement.",
-                "Applied Security Groups to control inbound/outbound traffic to AWS resources."
+                "Used CloudFront CDN for global latency reduction and performance enhancement."
             ],
             tech: ["VPC", "EC2", "ALB", "CloudFront", "IAM", "Auto Scaling", "s3", "dynamodb", "Terraform"],
             liveUrl: "#",
@@ -104,24 +88,10 @@ const Projects = () => {
             exit="exit"
             variants={pageVariants}
         >
-            {/* Background Beams and Orbs */}
             <BackgroundBeams className="opacity-30" />
             <GlowingOrb size={300} color="terminal-green" className="top-10 -right-20 opacity-30" />
-            <GlowingOrb size={250} color="pipeline-blue" className="bottom-20 -left-10 opacity-30" />
 
-            {/* Background Decorative Elements */}
             <div className="fixed inset-0 pointer-events-none">
-
-                {/* Floating geometric shapes with motion */}
-                <motion.div
-                    className="absolute top-20 right-10 w-32 h-32 border border-pipeline-blue/10 rounded-lg"
-                    animate={{
-                        rotate: [12, -12, 12],
-                        y: [0, -20, 0],
-                    }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                />
-
                 <motion.div
                     className="absolute bottom-40 left-20 w-24 h-24 border border-terminal-green/10 rounded-full"
                     animate={{
@@ -139,30 +109,11 @@ const Projects = () => {
                     }}
                     transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
                 />
-
-                {/* Floating code snippets */}
-                <motion.div
-                    className="absolute bottom-1/3 right-20 px-3 py-2 rounded bg-pipeline-blue/5 border border-pipeline-blue/10 font-mono text-xs text-pipeline-blue/30 hidden lg:block"
-                    variants={floatVariants(1)}
-                    animate="animate"
-                >
-                    docker compose up
-                </motion.div>
-
-                {/* Pipeline flow line animation */}
-                <motion.div
-                    className="absolute top-1/3 right-0 w-1/2 h-px bg-gradient-to-l from-transparent via-pipeline-blue/20 to-transparent"
-                    animate={{ opacity: [0.2, 0.5, 0.2] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                />
-
-                {/* Grid dots pattern */}
                 <div className="absolute inset-0 bg-dot-pattern opacity-[0.02]" />
             </div>
 
             <div className="container max-w-5xl px-4 sm:px-6 py-8 sm:py-12 relative">
                 <div className="space-y-8 sm:space-y-12">
-                    {/* Header */}
                     <motion.div
                         className="space-y-4"
                         variants={itemVariants}
@@ -179,7 +130,6 @@ const Projects = () => {
                         </p>
                     </motion.div>
 
-                    {/* Projects Grid with Scroll Reveal */}
                     <motion.div
                         className="space-y-6"
                         variants={containerVariants}
@@ -199,10 +149,8 @@ const Projects = () => {
                                         boxShadow: "0 10px 40px -10px rgba(5, 206, 145, 0.1)"
                                     }}
                                 >
-                                    {/* Hover Accent Line */}
                                     <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-terminal-green to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                                    {/* Project Header */}
                                     <div className="p-4 sm:p-6 border-b border-border/50 bg-secondary/20">
                                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                                             <div className="flex items-start gap-4">
@@ -225,14 +173,13 @@ const Projects = () => {
                                                 </div>
                                             </div>
 
-                                            {/* Action buttons */}
                                             <div className="flex gap-2 ml-11 sm:ml-0">
                                                 {project.liveUrl !== "#" && (
                                                     <Button variant="outline" size="sm" asChild className="h-8 hover:bg-terminal-green/10 hover:text-terminal-green hover:border-terminal-green/50">
                                                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                                                             <ExternalLink className="h-3.5 w-3.5 mr-1.5" />
                                                             <span className="text-xs">Live</span>
-                                                            <ArrowRight className="h-3 w-3 ml-1 group-hover/btn:translate-x-0.5 transition-transform" />
+                                                            <ArrowRight className="h-3 w-3 ml-1" />
                                                         </a>
                                                     </Button>
                                                 )}
@@ -248,9 +195,7 @@ const Projects = () => {
                                         </div>
                                     </div>
 
-                                    {/* Project Content */}
                                     <div className="p-4 sm:p-6 space-y-4">
-                                        {/* Description */}
                                         <ul className="space-y-2">
                                             {project.description.map((point, i) => (
                                                 <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -260,7 +205,6 @@ const Projects = () => {
                                             ))}
                                         </ul>
 
-                                        {/* Tech Stack */}
                                         <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border/50">
                                             {project.tech.map((tech) => (
                                                 <span
@@ -277,7 +221,6 @@ const Projects = () => {
                         })}
                     </motion.div>
 
-                    {/* Footer note */}
                     <motion.div
                         className="text-center py-8"
                         variants={itemVariants}

@@ -2,98 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
-/* DevOps & Cloud themed design system - Creative Terminal Aesthetic */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 
 @layer base {
   :root {
-    --background: 220 20% 4%;
-    --foreground: 210 40% 98%;
-
-    --card: 220 20% 7%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 220 20% 7%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 142 76% 50%;
-    --primary-foreground: 220 20% 4%;
-
-    --secondary: 220 20% 12%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 220 20% 15%;
-    --muted-foreground: 210 20% 60%;
-
-    --accent: 210 100% 50%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
-    --ring: 142 76% 50%;
-
-    --radius: 0.5rem;
-
-    /* DevOps theme colors */
-    --terminal-green: 180 100% 50%;
-    --terminal-cyan: 180 100% 50%;
-    --pipeline-blue: 210 100% 55%;
-    --deploy-orange: 25 100% 55%;
-    --docker-blue: 200 100% 45%;
-    --aws-orange: 30 100% 50%;
-    --k8s-blue: 210 90% 55%;
-    --git-red: 10 90% 55%;
-
-    --sidebar-background: 220 20% 6%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 142 76% 50%;
-    --sidebar-primary-foreground: 220 20% 4%;
-    --sidebar-accent: 220 20% 12%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 220 20% 18%;
-    --sidebar-ring: 142 76% 50%;
-  }
-
-  .light {
-    --background: 0 0% 98%;
-    --foreground: 220 20% 10%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 20% 10%;
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 10%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 142 76% 36%;
+    --primary: 210 100% 50%;
+    /* Modern bright blue */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 96%;
-    --secondary-foreground: 220 20% 10%;
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 220 20% 94%;
-    --muted-foreground: 220 10% 40%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 210 100% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 210 20% 96%;
+    --accent-foreground: 212 100% 50%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 20% 88%;
-    --input: 220 20% 88%;
-    --ring: 142 76% 36%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.75rem;
+  }
 
-    /* Light mode DevOps colors */
-    --terminal-green: 180 100% 40%;
-    --terminal-cyan: 180 100% 35%;
-    --pipeline-blue: 210 100% 45%;
-    --deploy-orange: 25 100% 45%;
-    --docker-blue: 200 100% 40%;
-    --aws-orange: 30 100% 45%;
-    --k8s-blue: 210 90% 45%;
-    --git-red: 10 90% 45%;
+  .dark {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 100%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 10% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 10% 10%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 240 10% 14%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 10% 15%;
+    --input: 240 10% 15%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
@@ -103,532 +78,47 @@
   }
 
   body {
-    @apply text-foreground font-mono antialiased bg-background;
-    min-height: 100vh;
+    @apply bg-background text-foreground tracking-wide font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
     overflow-x: hidden;
   }
 
-  /* Scrollbar styling */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--terminal-green) / 0.3);
-    border-radius: 4px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--terminal-green) / 0.5);
-  }
-
-  /* Selection styling */
-  ::selection {
-    background: hsl(var(--terminal-green) / 0.3);
-    color: hsl(var(--foreground));
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 @layer utilities {
-
-  /* Terminal text effect */
-  .terminal-text {
-    color: hsl(var(--terminal-green));
-    text-shadow: 0 0 10px hsl(var(--terminal-green) / 0.5);
-  }
-
-  .terminal-cyan {
-    color: hsl(var(--terminal-cyan));
-    text-shadow: 0 0 10px hsl(var(--terminal-cyan) / 0.5);
-  }
-
-  /* Glowing effect for text */
-  .glow-green {
-    text-shadow:
-      0 0 5px hsl(var(--terminal-green) / 0.5),
-      0 0 10px hsl(var(--terminal-green) / 0.3),
-      0 0 20px hsl(var(--terminal-green) / 0.2);
-  }
-
-  .glow-blue {
-    text-shadow:
-      0 0 5px hsl(var(--pipeline-blue) / 0.5),
-      0 0 10px hsl(var(--pipeline-blue) / 0.3),
-      0 0 20px hsl(var(--pipeline-blue) / 0.2);
-  }
-
-  /* Terminal prompt styling */
-  .terminal-prompt::before {
-    content: "$ ";
-    color: hsl(var(--terminal-green));
-    font-weight: bold;
-  }
-
-  /* Typing cursor animation */
-  .typing-cursor::after {
-    content: "▋";
-    animation: blink 1s step-end infinite;
-    color: hsl(var(--terminal-green));
-  }
-
-  @keyframes blink {
-
-    0%,
-    100% {
-      opacity: 1;
-    }
-
-    50% {
-      opacity: 0;
-    }
-  }
-
-  /* Pipeline animation */
-  .pipeline-flow {
-    background: linear-gradient(90deg,
-        transparent 0%,
-        hsl(var(--terminal-green) / 0.3) 50%,
-        transparent 100%);
-    background-size: 200% 100%;
-    animation: pipeline-flow 2s linear infinite;
-  }
-
-  @keyframes pipeline-flow {
-    0% {
-      background-position: 200% 0;
-    }
-
-    100% {
-      background-position: -200% 0;
-    }
-  }
-
-  /* Deployment status indicators */
-  .status-success {
-    @apply bg-green-500/20 text-green-400 border border-green-500/30;
-  }
-
-  .status-pending {
-    @apply bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
-  }
-
-  .status-running {
-    @apply bg-blue-500/20 text-blue-400 border border-blue-500/30;
-  }
-
-  /* Code block styling */
-  .code-block {
-    @apply bg-background/80 border border-border/50 rounded-lg p-4;
-    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
-  }
-
-  /* Grid background pattern */
-  .grid-pattern {
-    background-image:
-      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
-    background-size: 50px 50px;
-  }
-
-  /* Dotted background pattern */
-  .dots-pattern {
-    background-image: radial-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-
-  /* Animated gradient border */
-  .gradient-border {
-    position: relative;
-    background: hsl(var(--card));
-    border-radius: var(--radius);
-  }
-
-  .gradient-border::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    border-radius: calc(var(--radius) + 2px);
-    background: linear-gradient(45deg,
-        hsl(var(--terminal-green)),
-        hsl(var(--pipeline-blue)),
-        hsl(var(--deploy-orange)),
-        hsl(var(--terminal-green)));
-    background-size: 300% 300%;
-    animation: gradient-rotate 4s linear infinite;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .gradient-border:hover::before {
-    opacity: 1;
-  }
-
-  @keyframes gradient-rotate {
-    0% {
-      background-position: 0% 50%;
-    }
-
-    50% {
-      background-position: 100% 50%;
-    }
-
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-
-  /* Terminal window styling */
-  .terminal-window {
-    @apply bg-card border border-border rounded-lg overflow-hidden;
-  }
-
-  .terminal-header {
-    @apply flex items-center gap-2 px-4 py-2 bg-secondary/50 border-b border-border;
-  }
-
-  .terminal-dot {
-    @apply w-3 h-3 rounded-full;
-  }
-
-  .terminal-body {
-    @apply p-4 font-mono text-sm;
-  }
-
-  /* Fade animations */
-  .animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
-  }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out forwards;
-  }
-
-  .animate-fade-in-delay-1 {
-    animation: fade-in-up 0.6s ease-out 0.1s forwards;
-    opacity: 0;
-  }
-
-  .animate-fade-in-delay-2 {
-    animation: fade-in-up 0.6s ease-out 0.2s forwards;
-    opacity: 0;
-  }
-
-  .animate-fade-in-delay-3 {
-    animation: fade-in-up 0.6s ease-out 0.3s forwards;
-    opacity: 0;
-  }
-
-  .animate-fade-in-delay-4 {
-    animation: fade-in-up 0.6s ease-out 0.4s forwards;
-    opacity: 0;
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Stagger children animation */
-  .stagger-children>* {
-    opacity: 0;
-    animation: fade-in-up 0.5s ease-out forwards;
-  }
-
-  .stagger-children>*:nth-child(1) {
-    animation-delay: 0.05s;
-  }
-
-  .stagger-children>*:nth-child(2) {
-    animation-delay: 0.1s;
-  }
-
-  .stagger-children>*:nth-child(3) {
-    animation-delay: 0.15s;
-  }
-
-  .stagger-children>*:nth-child(4) {
-    animation-delay: 0.2s;
-  }
-
-  .stagger-children>*:nth-child(5) {
-    animation-delay: 0.25s;
-  }
-
-  .stagger-children>*:nth-child(6) {
-    animation-delay: 0.3s;
-  }
-
-  .stagger-children>*:nth-child(7) {
-    animation-delay: 0.35s;
-  }
-
-  .stagger-children>*:nth-child(8) {
-    animation-delay: 0.4s;
-  }
-
-  .stagger-children>*:nth-child(9) {
-    animation-delay: 0.45s;
-  }
-
-  /* Hover lift effect */
-  .hover-lift {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-4px);
-  }
-
-  /* Pulse animation for status indicators */
-  .pulse-dot {
-    @apply inline-block w-2 h-2 rounded-full bg-green-500;
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse-glow {
-
-    0%,
-    100% {
-      opacity: 1;
-      box-shadow: 0 0 0 0 hsl(var(--terminal-green) / 0.7);
-    }
-
-    50% {
-      opacity: 0.8;
-      box-shadow: 0 0 0 8px hsl(var(--terminal-green) / 0);
-    }
-  }
-
-  /* Spinning animation for loaders */
-  .spin-slow {
-    animation: spin 3s linear infinite;
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  /* Floating animation */
-  .float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  @keyframes float {
-
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-
-  /* Tech badge styling */
-  .tech-badge {
-    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md;
-    @apply bg-secondary/50 text-muted-foreground;
-    @apply border border-border/50;
-    @apply transition-all duration-200;
-  }
-
-  .tech-badge:hover {
-    background-color: hsl(var(--terminal-green) / 0.1);
-    color: hsl(var(--terminal-green));
-    border-color: hsl(var(--terminal-green) / 0.3);
-    text-shadow: 0 0 10px hsl(var(--terminal-green) / 0.3);
-  }
-
-  /* Card with terminal styling */
-  .card-terminal {
-    @apply bg-card border border-border rounded-lg overflow-hidden;
-    @apply transition-all duration-300;
-  }
-
-  .card-terminal:hover {
-    border-color: hsl(var(--terminal-green) / 0.3);
-    box-shadow: 0 0 20px hsl(var(--terminal-green) / 0.1);
-  }
-
-  /* Pipeline step styling */
-  .pipeline-step {
-    @apply relative flex items-center gap-3 p-3 rounded-lg;
-    @apply bg-secondary/30 border border-border/50;
-    @apply transition-all duration-300;
-  }
-
-  .pipeline-step::after {
-    content: "";
-    @apply absolute right-0 top-1/2 w-8 h-0.5 -translate-y-1/2 translate-x-full;
-    background: linear-gradient(90deg, hsl(var(--border)), transparent);
-  }
-
-  .pipeline-step:last-child::after {
-    display: none;
-  }
-
-  .pipeline-step:hover {
-    background-color: hsl(var(--terminal-green) / 0.1);
-    border-color: hsl(var(--terminal-green) / 0.3);
-  }
-
-  /* ASCII art container */
-  .ascii-art {
-    @apply font-mono text-xs leading-none whitespace-pre;
-    color: hsl(var(--terminal-green) / 0.6);
-  }
-
-  /* Scanline effect */
-  .scanlines::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(0deg,
-        transparent,
-        transparent 2px,
-        hsl(var(--background) / 0.03) 2px,
-        hsl(var(--background) / 0.03) 4px);
-    pointer-events: none;
-  }
-
-  /* Glow box */
-  .glow-box {
-    @apply relative;
-  }
-
-  .glow-box::before {
-    content: "";
-    @apply absolute -inset-1 rounded-lg opacity-0 transition-opacity duration-300;
-    background: linear-gradient(45deg,
-        hsl(var(--terminal-green) / 0.2),
-        hsl(var(--pipeline-blue) / 0.2));
-    filter: blur(10px);
-    z-index: -1;
-  }
-
-  .glow-box:hover::before {
-    opacity: 1;
-  }
-
-  /* Command line input styling */
-  .command-input {
-    @apply bg-background border border-border rounded-lg px-4 py-3;
-    @apply font-mono text-sm;
-    @apply focus:outline-none;
-    @apply transition-all duration-200;
-  }
-
-  .command-input:focus {
-    border-color: hsl(var(--terminal-green) / 0.5);
-    box-shadow: 0 0 0 2px hsl(var(--terminal-green) / 0.1);
-  }
-
-  /* Text color utilities */
-  .text-terminal-green {
-    color: hsl(var(--terminal-green));
-  }
-
-  .text-pipeline-blue {
-    color: hsl(var(--pipeline-blue));
-  }
-
-  .text-deploy-orange {
-    color: hsl(var(--deploy-orange));
-  }
-
-  .text-docker-blue {
-    color: hsl(var(--docker-blue));
-  }
-
-  .text-aws-orange {
-    color: hsl(var(--aws-orange));
-  }
-
-  .text-k8s-blue {
-    color: hsl(var(--k8s-blue));
-  }
-
-  .text-git-red {
-    color: hsl(var(--git-red));
-  }
-
-  /* Background color utilities */
-  .bg-terminal-green {
-    background-color: hsl(var(--terminal-green));
+  .glass {
+    @apply bg-background/60 backdrop-blur-lg border border-white/10 shadow-[0_4px_30px_rgba(0, 0, 0, 0.1)];
   }
 
-  .bg-pipeline-blue {
-    background-color: hsl(var(--pipeline-blue));
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-xl border border-white/5 shadow-2xl;
   }
 
-  /* Border color utilities */
-  .border-terminal-green {
-    border-color: hsl(var(--terminal-green));
+  .text-glow {
+    text-shadow: 0 0 20px rgba(0, 163, 255, 0.4);
   }
 
-  /* Gradient text */
   .gradient-text {
-    background: linear-gradient(135deg,
-        hsl(var(--terminal-green)),
-        hsl(var(--pipeline-blue)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
   }
 
-  /* Animated underscore */
-  .animated-underscore::after {
-    content: "_";
-    animation: blink 1s step-end infinite;
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
   }
 
-  /* Matrix rain effect container */
-  .matrix-bg {
-    position: relative;
-    overflow: hidden;
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
   }
 
-  .matrix-bg::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, transparent 0%, hsl(var(--background)) 100%),
-      repeating-linear-gradient(0deg,
-        transparent,
-        transparent 2px,
-        hsl(var(--terminal-green) / 0.03) 2px,
-        hsl(var(--terminal-green) / 0.03) 4px);
-    pointer-events: none;
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
   }
 }

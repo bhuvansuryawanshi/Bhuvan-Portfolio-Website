@@ -45,7 +45,6 @@ const Experience = () => {
             {/* Background Decorative Elements */}
             <BackgroundBeams className="opacity-20" />
             <GlowingOrb size={300} color="terminal-green" className="top-1/4 -right-20 opacity-20" />
-            <GlowingOrb size={250} color="pipeline-blue" className="bottom-1/4 -left-10 opacity-20" />
 
             <div className="fixed inset-0 pointer-events-none">
                 {/* Floating geometric shapes */}
@@ -57,26 +56,8 @@ const Experience = () => {
                     }}
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <motion.div
-                    className="absolute bottom-32 right-20 w-32 h-32 border border-pipeline-blue/10 rounded-full"
-                    animate={{
-                        scale: [1, 1.1, 1],
-                        opacity: [0.1, 0.3, 0.1]
-                    }}
-                    transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-                />
 
                 {/* Floating code snippets */}
-                <motion.div
-                    className="absolute top-40 right-40 px-3 py-2 rounded bg-pipeline-blue/5 border border-pipeline-blue/10 font-mono text-xs text-pipeline-blue/30 hidden lg:block"
-                    animate={{
-                        y: [0, 15, 0],
-                        rotate: [6, 10, 6]
-                    }}
-                    transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-                >
-                    git commit -m
-                </motion.div>
                 <motion.div
                     className="absolute bottom-1/4 left-20 px-3 py-2 rounded bg-terminal-green/5 border border-terminal-green/10 font-mono text-xs text-terminal-green/30 hidden lg:block"
                     animate={{
