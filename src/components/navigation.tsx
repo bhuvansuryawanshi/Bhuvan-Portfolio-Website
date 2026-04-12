@@ -22,7 +22,8 @@ const Navigation = () => {
   const navItems = [
     { href: "#experience", label: "Experience" },
     { href: "#about", label: "About" },
-    { href: "#projects", label: "Projects" }
+    { href: "#projects", label: "Projects" },
+    { href: "#notes", label: "Dev Logs" },
   ]
 
   // Track scroll position for header blur and active link
@@ -30,17 +31,24 @@ const Navigation = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
 
-      const sections = navItems.map(item => item.href.substring(1))
-      let current = sections[0]
-      for (const section of sections) {
-        const el = document.getElementById(section)
-        if (el && window.scrollY >= el.offsetTop - 200) {
-          current = `#${section}`
+      const OFFSET = 80 // header height buffer
+      const scrollPos = window.scrollY + OFFSET
+
+      let current = '' // nothing active at the top (home/hero)
+
+      for (const item of navItems) {
+        const el = document.getElementById(item.href.substring(1))
+        if (!el) continue
+        // getBoundingClientRect gives position relative to viewport; add scrollY for document position
+        const elTop = el.getBoundingClientRect().top + window.scrollY
+        if (elTop <= scrollPos) {
+          current = item.href
         }
       }
       setActiveHash(current)
     }
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 

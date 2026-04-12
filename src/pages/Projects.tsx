@@ -30,7 +30,7 @@ const Projects = () => {
             icon: Server,
             description: [
                 "Deployed AWS Transfer Family server with SFTP protocol for secure, encrypted file transfers to Amazon S3.",
-                "Configured IAM roles and policies to map SFTP users to specific S3 bucket directories with least-privilege access.",
+                "Configured IAM roles and policies to map SFTP users to specific S3 bucket directories with least privilege access.",
                 "Implemented password-based authentication for simplified user management and secure access control.",
                 "Validated end-to-end file transfer workflow using FileZilla SFTP client with successful S3 integration."
             ],
@@ -61,7 +61,7 @@ const Projects = () => {
             description: [
                 "Developed a fully responsive website using Bootstrap, PHP, and CodeIgniter.",
                 "Implemented smooth animations and interactive UI elements for modern appeal.",
-                "Ensured seamless navigation across all devices with mobile-first design.",
+                "Ensured seamless navigation across all devices with mobile first design.",
                 "Integrated dynamic content management and secure user authentication."
             ],
             tech: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "CodeIgniter"],

@@ -8,6 +8,7 @@ import Navigation from "@/components/navigation";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProjectDetail from "./pages/ProjectDetail";
+import NoteDetail from "./pages/NoteDetail";
 import { CursorFollower } from "@/components/ui/cursor-follower";
 import { ScrollProgress } from "@/components/ui/scroll-animations";
 import BackgroundLogs from "@/components/BackgroundLogs";
@@ -31,6 +32,7 @@ const App = () => (
                         <Routes>
                             <Route path="/" element={<Index />} />
                             <Route path="/project/:id" element={<ProjectDetail />} />
+                            <Route path="/note/:id" element={<NoteDetail />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </div>

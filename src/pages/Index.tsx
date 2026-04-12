@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import {
   Cloud, Terminal, Server, Shield, Github, Linkedin, Mail, ExternalLink,
@@ -15,6 +15,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import AboutMe from "@/components/AboutMe";
 import TerminalSection from "@/components/TerminalSection";
 import FloatingTerminal from "@/components/FloatingTerminal";
+import FieldNotes from "@/components/FieldNotes";
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -30,44 +31,6 @@ const fadeInUp = {
 };
 
 const Index = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate initial loading/splash screen
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="fixed inset-0 z-[100] bg-[#050505] flex flex-col items-center justify-center">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 1, 0.5],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="w-16 h-16 border-t-2 border-b-2 border-blue-500 rounded-full mb-8"
-        />
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="text-white font-mono tracking-widest text-sm"
-        >
-          INITIALIZING_SYSTEM...
-        </motion.div>
-      </div>
-    );
-  }
-
   return (
     <div className="bg-background min-h-screen text-foreground font-sans selection:bg-primary/20 selection:text-primary pb-16 font-medium tracking-tight">
 
@@ -180,6 +143,19 @@ const Index = () => {
             <div className="w-full">
               <ProjectsSection />
             </div>
+          </motion.div>
+        </section>
+
+        {/* --- FIELD NOTES SECTION --- */}
+        <section id="notes" className="py-16 relative z-10">
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={staggerContainer}
+            className="w-full"
+          >
+            <FieldNotes />
           </motion.div>
         </section>
 

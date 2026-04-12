@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ChevronLeft, Github, Globe, Server, Code, Terminal, ChevronRight, Layout, Database, Shield } from 'lucide-react';
+import { ChevronLeft, Github, Terminal, ChevronRight } from 'lucide-react';
 import { projects } from '@/lib/projects';
 
 const ProjectDetail = () => {
@@ -39,7 +39,7 @@ const ProjectDetail = () => {
                     Back to Selection
                 </Link>
 
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
+                <div className={`grid gap-16 items-start ${(project as any).detailImage !== null ? 'lg:grid-cols-2' : 'max-w-3xl'}`}>
                     {/* Left: Content */}
                     <motion.div 
                         initial={{ opacity: 0, x: -30 }}
@@ -63,21 +63,6 @@ const ProjectDetail = () => {
                             </p>
                         </div>
 
-                        <div className="pt-8 border-t border-border flex flex-wrap gap-8">
-                            <div>
-                                <h4 className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-2">Platform</h4>
-                                <span className="text-sm text-foreground font-semibold flex items-center gap-2"><Server size={14} className="text-primary" /> AWS Cloud</span>
-                            </div>
-                            <div>
-                                <h4 className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-2">Duration</h4>
-                                <span className="text-sm text-foreground font-semibold flex items-center gap-2"><Globe size={14} className="text-primary" /> 3 Weeks</span>
-                            </div>
-                            <div>
-                                <h4 className="text-[10px] font-bold tracking-[0.2em] text-muted-foreground uppercase mb-2">Role</h4>
-                                <span className="text-sm text-foreground font-semibold flex items-center gap-2"><Code size={14} className="text-primary" /> DevOps Engineer</span>
-                            </div>
-                        </div>
-
                         <div className="flex gap-4 pt-4">
                             <a 
                                 href={project.git} 
@@ -91,7 +76,8 @@ const ProjectDetail = () => {
                         </div>
                     </motion.div>
 
-                    {/* Right: Asset Card */}
+                    {/* Right: Asset Card — only shown when detailImage is not explicitly null */}
+                    {(project as any).detailImage !== null && (
                     <motion.div 
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
@@ -106,80 +92,31 @@ const ProjectDetail = () => {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60" />
                         </div>
-                        
-                        {/* Decorative Badge */}
-                        <div className="absolute -bottom-6 -right-6 md:-right-10 bg-card border border-border p-6 rounded-3xl shadow-xl flex items-center gap-4 z-20">
-                            <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-primary-foreground shadow-lg shadow-primary/20">
-                                <Shield size={24} />
-                            </div>
-                            <div>
-                                <h4 className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground whitespace-nowrap">Security Status</h4>
-                                <p className="font-bold text-foreground">Fully Hardened</p>
-                            </div>
-                        </div>
                     </motion.div>
+                    )}
                 </div>
 
                 {/* Lower Details */}
-                <div className="mt-32 grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+                {/* Simplified Technical Highlights */}
+                <div className="mt-32 max-w-3xl">
                     <motion.div 
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="space-y-6"
+                        className="space-y-8"
                     >
                         <div className="flex items-center gap-4">
                             <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-primary"><Terminal size={18} /></div>
-                            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground">Infrastructure Steps</h4>
+                            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground">Technical Implementation</h4>
                         </div>
-                        <ul className="space-y-4">
+                        <div className="grid md:grid-cols-2 gap-x-12 gap-y-4">
                             {project.details.map((detail, i) => (
-                                <li key={i} className="flex gap-4 text-sm text-muted-foreground leading-relaxed">
+                                <li key={i} className="flex gap-4 text-sm text-muted-foreground leading-relaxed list-none">
                                     <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-primary flex-shrink-0" />
                                     {detail}
                                 </li>
                             ))}
-                        </ul>
-                    </motion.div>
-
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, delay: 0.1 }}
-                        className="space-y-6"
-                    >
-                        <div className="flex items-center gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-primary"><Layout size={18} /></div>
-                            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground">Critical Challenges</h4>
                         </div>
-                        <ul className="space-y-4">
-                            {project.challenges?.map((challenge, i) => (
-                                <li key={i} className="flex gap-4 text-sm text-muted-foreground leading-relaxed italic">
-                                    <ChevronRight size={14} className="mt-1 flex-shrink-0 text-primary" />
-                                    {challenge}
-                                </li>
-                            ))}
-                        </ul>
-                    </motion.div>
-
-                    <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, delay: 0.2 }}
-                        className="space-y-6"
-                    >
-                        <div className="flex items-center gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-secondary flex items-center justify-center text-primary"><Database size={18} /></div>
-                            <h4 className="text-xs font-bold uppercase tracking-widest text-foreground">Project Outcomes</h4>
-                        </div>
-                        <ul className="space-y-4">
-                            {project.outcomes?.map((outcome, i) => (
-                                <li key={i} className="flex gap-4 text-sm font-bold text-foreground leading-tight">
-                                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 text-[10px]">{i+1}</div>
-                                    {outcome}
-                                </li>
-                            ))}
-                        </ul>
                     </motion.div>
                 </div>
             </div>
